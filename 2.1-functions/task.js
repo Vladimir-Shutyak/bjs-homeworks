@@ -1,9 +1,9 @@
 // Задание 1
 function getSolutions (a,b,c)
 {
-    let D = null;
-    let x1 = null;
-    let x2 = null;
+    let D;
+    let x1;
+    let x2;
 
     D = b ** 2 - 4 * a * c;
 
@@ -26,7 +26,7 @@ function getSolutions (a,b,c)
 
 function showSolutionsMessage (a,b,c)
 {
-    let result=undefined;
+    let result = getSolutions (a,b,c);
 
     result= getSolutions (a,b,c);
     console.log(`Вычисляем корни квадратного уравнения ${a}x² + ${b}x + ${c}`);
@@ -47,8 +47,11 @@ function showSolutionsMessage (a,b,c)
 function getAverageScore(data)
 {
   let subjObj = new Object();
-  let allAverage = null;
-  let i = null;
+  let allAverage;
+  let i;
+  
+  i = 0; 
+  allAverage = 0;
 
   for (let subject in data) {
     let marksArray = data[subject];
@@ -57,7 +60,7 @@ function getAverageScore(data)
     i = i + 1;
   }
  
-  if (i === null) {
+  if (i === 0) {
     subjObj["average"] = 0;
   }
   else {
@@ -70,10 +73,12 @@ function getAverageScore(data)
 
 function getAverageMark([...marks])
 {
-    let summ = null;
-    let averageSumm = null;
-    let marksLength = null;
+    let summ;
+    let averageSumm;
+    let marksLength;
 
+    summ = 0;
+    averageSumm = 0;
     marksLength = marks.length;
 
     if (marksLength === 0) {
