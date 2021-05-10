@@ -3,22 +3,26 @@ function calculateTotalMortgage(percent, contribution, amount, dateEnd) {
     "use strict"; 
     let today = new Date();
 
-    if ( (isNaN (parseFloat (percent))) || (percent <0) ) {
-        alert(`Параметр percent содержит неправильное значение ${parseFloat (percent)}`);
+    if ( ( isNaN (parseFloat (percent) ) ) || (percent < 0 ) ) {
+        return `Параметр "Процентная ставка" содержит неправильное значение ${parseFloat (percent) || percent}`;   
     }
+    
 
     if (isNaN (parseFloat (contribution)) || (contribution <0) ) {
-        alert(`Параметр contribution содержит неправильное значение ${parseFloat (contribution)}`);
+        return `Параметр "Первоначальный взнос" содержит неправильное значение ${parseFloat (contribution) || contribution}`;
     }
 
     if (isNaN (parseFloat (amount)) || (amount <0) ) {
-        alert(`Параметр amount содержит неправильное значение ${parseFloat (amount)}`);
+        return `Параметр "Общая стоимость" содержит неправильное значение ${parseFloat (amount) || amount}`;
     }
     
-    
 
-    if ( (dateEnd < today) || (dateEnd.length === undefined) ) {
-        alert(`Параметр date содержит пустую дату или предыдущую ${dateEnd}`);
+    if ( dateEnd < today ) {
+       return `Параметр "Срок ипотеки" содержит неправильное значение ${dateEnd.toLocaleString()}`;
+    }
+
+    if (amount < contribution) {
+        return (0);
     }
 
     let S = amount - contribution;
@@ -32,17 +36,10 @@ function calculateTotalMortgage(percent, contribution, amount, dateEnd) {
 }
 
 function getGreeting(name) {
-
     // код для задачи №2 писать здесь
-    if (name === undefined){
-        return `Привет, мир! Меня зовут Аноним.`;   
-    }
-
-    if (name.length > 0) {
-        return `Привет, мир! Меня зовут ${name}.`; 
-    }
-    else {
-        return `Привет, мир! Меня зовут Аноним.`;  
+   
+    if  ( (name === undefined) || (name.length > 0) || (name.length === 0) ) {
+        return `Привет, мир! Меня зовут ${name || 'Аноним'}.`; 
     }
     
 }
